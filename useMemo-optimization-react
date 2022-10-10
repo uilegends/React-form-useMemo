@@ -1,0 +1,42 @@
+import React, { useState, useMemo } from 'react';
+
+const  App =  () =>  {
+   
+  const [count, setCount] = useState(1);
+
+  const factorialData = useMemo(() => {
+    return factorialFun(count);
+  }, [count])
+  const [name, setName] = useState("");
+
+  return (
+    <div>
+      <h2>Count Value: {count}</h2>
+     <h3>Factorial Data : {factorialData && factorialData }</h3>
+     <button type="button" onClick={()=> setCount(count+1)}>Increment</button>
+     <button type="button" onClick={() => setCount(count-1)}>Decrement</button>
+
+     <div>
+      <label>Enter Name</label>
+     </div>
+     <input type="text" placeholder='Enter name' value={name} onChange={(e)=> setName(e.target.value)} />
+     <p>Prining Name {name}</p>
+  </div>
+  )
+
+
+  function factorialFun(num) {
+    let i = 0;
+    while(i<200000000) i++;
+    if(num<0) {
+      return -1;
+    } 
+     if(num===1) {
+      return 1;
+    } 
+    return num * factorialFun(num-1);
+  }
+
+}
+
+export default App;
