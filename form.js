@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 
 const  App =  () =>  {
    
-  const [inputs, setInputs] = useState({});
-
+  const [inputs, setInputs] = useState([]);
 
   const onHandlechange = (e) => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
     setInputs(input => ({...input, [name]:value}));
-  }  
+  } 
+  
+  const onSubmithandler = (event) => {
+   event.preventDefault();
+   console.log(inputs);
+  }
   return (
     <div className='contactForm'>
        <form onSubmit={onSubmithandler}>
@@ -20,7 +24,6 @@ const  App =  () =>  {
        </form>
     </div>
   )
-
 }
 
 export default App;
